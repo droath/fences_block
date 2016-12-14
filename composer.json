@@ -1,0 +1,16 @@
+{
+    "name": "drupal/fences_block",
+    "description": "Alter block level template elements or add classes.",
+    "type": "drupal-module",
+    "minimum-stability": "dev",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Travis Tomka",
+            "email": "underoathosx@gmail.com"
+        }
+    ],
+    "require": {
+        "drupal/fences": "^8.2"
+    }
+}
