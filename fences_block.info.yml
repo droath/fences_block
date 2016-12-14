@@ -1,0 +1,8 @@
+type: module
+name: Fences block
+description: Allow fences to change the block wrapper markup.
+core: 8.x
+package: Other
+dependencies:
+  - block
+  - fences
