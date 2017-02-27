@@ -32,26 +32,27 @@ class FencesBlock {
         return;
       }
 
-      foreach ($settings['items'] as $section => $info) {
-        $classes = self::processClasses($info['classes']);
+    if (!isset($settings['sections']) || empty($settings['sections'])) {
+      return;
+    }
 
-        // Set the fences element classes based on the section.
-        switch ($section) {
-          case 'wrapper':
-            self::addClasses($variables, 'attributes', $classes);
-            break;
+    // Iterate over fences sections and set the classes and/or HTML element.
+    foreach ($settings['sections'] as $section => $info) {
+      $classes = self::processClasses($info['classes']);
 
-          case 'label':
-            self::addClasses($variables, 'title_attributes', $classes);
-            break;
+      // Set the fences section HTML element classes.
+      switch ($section) {
+        case 'wrapper':
+          self::addClasses($variables, 'attributes', $classes);
+          break;
 
-          case 'content':
-            self::addClasses($variables, 'content_attributes', $classes);
-            break;
-        }
+        case 'label':
+          self::addClasses($variables, 'title_attributes', $classes);
+          break;
 
-        // Set the fences element based on the section.
-        $variables['fences_' . $section . '_element'] = $info['element'];
+        case 'content':
+          self::addClasses($variables, 'content_attributes', $classes);
+          break;
       }
 
       // Set the fences section HTML element.
