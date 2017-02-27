@@ -60,7 +60,11 @@ class FencesTagElement extends FormElement {
    * @return array
    *   An array of the fully processed element.
    */
-  public static function fencesTagElementProcess(array &$element, FormStateInterface $form_state, array &$complete_form) {
+  public static function fencesTagElementProcess(
+    array &$element,
+    FormStateInterface $form_state,
+    array &$complete_form
+  ) {
     $tag_manager = self::fencesTagManager();
 
     $element['sections'] = [

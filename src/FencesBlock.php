@@ -8,6 +8,9 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\block\Entity\Block;
 
+/**
+ * Define the fences block class.
+ */
 class FencesBlock {
 
   /**
