@@ -1,15 +1,14 @@
 # Fences Block
 
-### Description
-The module allows a site-builder to change HTML elements or add classes within the block configurations. It accounts for both content and configuration blocks. We are implementing a solution for page manager, so stay tune.
+The module allows a site builder to change block level element tags or add classes within the block configurations. It accounts for both content and configuration blocks that are rendered using the *block.html.twig* template.
 
-### How to Use:
+### Installation:
 
-- Enable the `fences_block` module.
-- Navigate to block layout `/admin/structure/block`.
-- Click **Place block** or **Configure** on an existing block.
-- Located on the bottom of the page you'll see the **Fences** settings.
-- Change the necessary configurations and click **Save**.
+- Enable the fences_block module like normal.
+- Navigate to block layout e.g(/admin/structure/block).
+- Click "Place block" or "Configure" on an existing block under the operations..
+- Next change any configurations under the "Fences Block" fieldset; then save.
 
-### Requirements
+### Dependencies
 - Fences
+
