@@ -1,0 +1,29 @@
+block.block.*.third_party_settings.fences_block:
+  type: mapping
+  label: Fences block
+  mapping:
+    fences:
+      type: mapping
+      label: Fences configuration
+      mapping:
+        sections:
+          type: mapping
+          label: Fences configuration sections
+          mapping:
+            wrapper:
+              type: fences_block.config.section
+            label:
+              type: fences_block.config.section
+            content:
+              type: fences_block.config.section
+
+fences_block.config.section:
+  type: mapping
+  label: Fences section
+  mapping:
+    element:
+      type: string
+      label: Section element tag
+    classes:
+      type: string
+      label: Section element classes
