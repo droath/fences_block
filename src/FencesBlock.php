@@ -53,6 +53,9 @@ class FencesBlock {
         // Set the fences element based on the section.
         $variables['fences_' . $section . '_element'] = $info['element'];
       }
+
+      // Set the fences section HTML element.
+      $variables['fences_element'][$section] = $info['element'];
     }
   }
 

@@ -32,30 +32,36 @@
  */
 #}
 
-{% if fences_wrapper_element != 'none' %}
-  <{{ fences_wrapper_element|default('div') }} {{ attributes }}>
+{# Start block wrapper #}
+{% if fences_element.wrapper != 'none' %}
+  <{{ fences_element.wrapper|default('div') }} {{ attributes }}>
 {% endif %}
+
+  {# Block label #}
   {{ title_prefix }}
   {% if label %}
-    {% if fences_label_element != 'none' %}
-      <{{ fences_label_element|default('h2') }} {{ title_attributes }}>
+    {% if fences_element.label != 'none' %}
+      <{{ fences_element.label|default('h2') }} {{ title_attributes }}>
     {% endif %}
       {{ label }}
-    {% if fences_label_element != 'none' %}
-      </{{ fences_label_element|default('h2') }}>
+    {% if fences_element.label != 'none' %}
+      </{{ fences_element.label|default('h2') }}>
     {% endif %}
   {% endif %}
   {{ title_suffix }}
+
+  {# Block content #}
   {% block content %}
-    {% if fences_content_element != 'none' %}
-      <{{ fences_content_element|default('div') }} {{ content_attributes }}>
+    {% if fences_element.content != 'none' %}
+      <{{ fences_element.content|default('div') }} {{ content_attributes }}>
     {% endif %}
       {{ content }}
-    {% if fences_content_element != 'none' %}
-      </{{ fences_content_element|default('div') }}>
+    {% if fences_element.content != 'none' %}
+      </{{ fences_element.content|default('div') }}>
     {% endif %}
   {% endblock %}
-{% if fences_wrapper_element != 'none' %}
-  </{{ fences_wrapper_element|default('div') }}>
-{% endif %}
 
+{# End block wrapper #}
+{% if fences_element.wrapper != 'none' %}
+  </{{ fences_element.wrapper|default('div') }}>
+{% endif %}
