@@ -23,6 +23,7 @@ class FencesTagElement extends FormElement {
     return [
       '#tree' => TRUE,
       '#input' => TRUE,
+      '#title' => new TranslatableMarkup('Fences'),
       '#sections' => [],
       '#process' => [
         [$class, 'fencesTagElementProcess'],
@@ -64,7 +65,7 @@ class FencesTagElement extends FormElement {
 
     $element['sections'] = [
       '#type' => 'details',
-      '#title' => t('Fences'),
+      '#title' => $element['#title'],
       '#open' => FALSE,
     ];
     $value = is_array($element['#value']) ? $element['#value'] : [];
