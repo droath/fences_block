@@ -5,12 +5,13 @@ namespace Drupal\fences_block;
 use Drupal\Core\Config\Entity\ThirdPartySettingsInterface;
 use Drupal\Core\Entity\Entity;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\block\Entity\Block;
 
 class FencesBlock {
 
   /**
-   * Fences block pre-process.
+   * Fences block preprocess.
    *
    * @param array &$variables
    *   An array of the block template variables.
@@ -23,14 +24,10 @@ class FencesBlock {
     }
     $block = Block::load($element['#id']);
 
-    if ($block instanceof ThirdPartySettingsInterface) {
-      $settings = $block->getThirdPartySetting(
-        'fences_block', 'fences', []
-      );
-
-      if (!isset($settings) || empty($settings['items'])) {
-        return;
-      }
+    if (!$block instanceof ThirdPartySettingsInterface) {
+      return;
+    }
+    $settings = $block->getThirdPartySetting('fences_block', 'fences', []);
 
     if (!isset($settings['sections']) || empty($settings['sections'])) {
       return;
@@ -71,23 +68,28 @@ class FencesBlock {
   public static function addConfigForm(array &$form, FormStateInterface $form_state) {
     $entity = $form_state->getFormObject()->getEntity();
 
-    $form['fences'] = [
+    if (!$entity instanceof ThirdPartySettingsInterface) {
+      return;
+    }
+
+    $form['settings']['fences'] = [
       '#type' => 'fences_tag',
+      '#title' => new TranslatableMarkup('Fences Block'),
       '#sections' => [
-        'wrapper' => 'Wrapper',
-        'title' => 'Title',
-        'content' => 'Content',
+        'wrapper' => new TranslatableMarkup('Wrapper'),
+        'label' => new TranslatableMarkup('Label'),
+        'content' => new TranslatableMarkup('Content'),
       ],
       '#default_value' => $entity->getThirdPartySetting(
         'fences_block', 'fences', []
       ),
     ];
 
-    $form['#entity_builders'][] = [get_class(), 'buildEntity'];
+    $form['#entity_builders'][] = [get_class(), 'buildBlockEntity'];
   }
 
   /**
-   * Entity builder callback.
+   * Block entity builder callback.
    *
    * @param string $entity_type_id
    *   The entity type identifier.
@@ -98,14 +100,14 @@ class FencesBlock {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The form state object.
    */
-  public static function buildEntity(
+  public static function buildBlockEntity(
     $entity_type_id,
     Entity $entity,
     array &$form,
     FormStateInterface &$form_state
   ) {
     $entity
-      ->setThirdPartySetting('fences_block', 'fences', $form_state->getValue('fences'))
+      ->setThirdPartySetting('fences_block', 'fences', $form_state->getValue(['settings', 'fences']))
       ->save();
   }
 
