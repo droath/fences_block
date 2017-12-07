@@ -11,6 +11,6 @@
         }
     ],
     "require": {
-        "drupal/fences": "^8.2"
+        "drupal/fences": "^2.0@alpha"
     }
 }
