@@ -3,7 +3,7 @@
 namespace Drupal\fences_block;
 
 use Drupal\Core\Config\Entity\ThirdPartySettingsInterface;
-use Drupal\Core\Entity\Entity;
+use Drupal\block\BlockInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\block\Entity\Block;
@@ -96,7 +96,7 @@ class FencesBlock {
    *
    * @param string $entity_type_id
    *   The entity type identifier.
-   * @param \Drupal\Core\Entity\Entity $entity
+   * @param \Drupal\block\BlockInterface $entity
    *   The entity object.
    * @param array &$form
    *   An array of form elements.
@@ -105,7 +105,7 @@ class FencesBlock {
    */
   public static function buildBlockEntity(
     $entity_type_id,
-    Entity $entity,
+    BlockInterface $entity,
     array &$form,
     FormStateInterface &$form_state
   ) {
