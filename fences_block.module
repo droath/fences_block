@@ -10,11 +10,13 @@ use Drupal\fences_block\FencesBlock;
 
 /**
  * Implements hook_theme_registry_alter().
+ * // #webksde#JP20171211: Hack: This is killing custom theme overrides: => Removed <=
+ * https://www.drupal.org/project/2856428/issues/2929951
  */
-function fences_block_theme_registry_alter(array &$theme_registry) {
-  $path = drupal_get_path('module', 'fences_block');
-  $theme_registry['block']['path'] = $path . '/templates';
-}
+//function fences_block_theme_registry_alter(array &$theme_registry) {
+  //  $path = drupal_get_path('module', 'fences_block');
+  //  $theme_registry['block']['path'] = $path . '/templates';
+//}
 
 /**
  * Implements hook_form_FORM_ID_alter().
